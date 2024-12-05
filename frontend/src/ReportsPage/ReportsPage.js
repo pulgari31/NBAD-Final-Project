@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Chart from "chart.js/auto";
 import axios from "axios";
+import { BACKEND_URL } from "../App";
 
 function ReportsPage() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function ReportsPage() {
 
   const fetchData = async () => {
     axios
-      .get("http://localhost:3001/api/reports/chart", {
+      .get(`${BACKEND_URL}/api/reports/chart`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },

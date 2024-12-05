@@ -6,6 +6,8 @@ import DashboardPage from "./DashboardPage/DashboardPage";
 import SummaryPage from "./SummaryPage/SummaryPage";
 import ReportsPage from "./ReportsPage/ReportsPage";
 
+export const BACKEND_URL = "http://localhost:3000";
+
 function App() {
   return (
     <BrowserRouter>

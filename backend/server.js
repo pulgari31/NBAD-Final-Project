@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = 3001;
+const PORT = 3000;
 
 const secretKey = process.env.JWT_SECRET_KEY;
 

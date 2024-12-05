@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_URL } from "../App";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function LoginPage() {
       password: document.getElementById("password").value,
     };
     axios
-      .post("http://localhost:3001/api/login", data)
+      .post(`${BACKEND_URL}/api/login`, data)
       .then((res) => {
         document.getElementById("username").value = "";
         document.getElementById("password").value = "";
