@@ -35,8 +35,8 @@ function ReportsPage() {
           dataSource.labels[i] = res.data.reportsChartData[i].district;
         }
         dataSource.datasets[0].label = res.data.reportsChartData[0].district;
-        createPieChart();
         setIsLoading(false);
+        createPieChart();
       })
       .catch((e) => {
         setTimeout(() => {
@@ -47,7 +47,7 @@ function ReportsPage() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [isLoading, setIsLoading]);
 
   function createPieChart() {
     var canvas = document.getElementById("myReportsChart");

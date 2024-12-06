@@ -42,8 +42,8 @@ function SummaryPage() {
           dataSource.datasets[0].data[i] = res.data.summaryChartData[i].funds;
           dataSource.labels[i] = res.data.summaryChartData[i].project;
         }
-        createPieChart();
         setIsLoading(false);
+        createPieChart();
       })
       .catch((e) => {
         setTimeout(() => {
@@ -54,7 +54,7 @@ function SummaryPage() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [isLoading, setIsLoading]);
 
   function createPieChart() {
     var canvas = document.getElementById("mySummaryChart");
