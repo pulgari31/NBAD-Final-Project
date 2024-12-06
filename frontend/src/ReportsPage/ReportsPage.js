@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Chart from "chart.js/auto";
 import axios from "axios";
 import { BACKEND_URL } from "../App";
 
 function ReportsPage() {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   var dataSource = {
     datasets: [
@@ -35,7 +34,6 @@ function ReportsPage() {
           dataSource.labels[i] = res.data.reportsChartData[i].district;
         }
         dataSource.datasets[0].label = res.data.reportsChartData[0].district;
-        setIsLoading(false);
         createPieChart();
       })
       .catch((e) => {
@@ -47,7 +45,7 @@ function ReportsPage() {
 
   useEffect(() => {
     fetchData();
-  }, [isLoading, setIsLoading]);
+  }, []);
 
   function createPieChart() {
     var canvas = document.getElementById("myReportsChart");
@@ -63,21 +61,7 @@ function ReportsPage() {
   return (
     <div className="reports-page">
       <div className="my-card">
-        {isLoading ? (
-          <div
-            style={{
-              width: "400px",
-              height: "400px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div className="loader"></div>
-          </div>
-        ) : (
-          <canvas id="myReportsChart" width="400" height="400"></canvas>
-        )}
+        <canvas id="myReportsChart" width="400" height="400"></canvas>
       </div>
       <div className="my-card" style={{ width: "85%" }}>
         <div style={{ textAlign: "center" }}>
